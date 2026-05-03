@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#ffffff">
+<title>Agarrazil / Brand Book + Tono de voz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --white: #ffffff;
+    --off-white: #fafafa;
+    --black: #050505;
+    --grey-1: #1a1a1a;
+    --grey-2: #555555;
+    --grey-3: #999999;
+    --grey-4: #d4d4d4;
+    --grey-5: #ebebeb;
+    --grey-6: #f5f5f5;
+    --accent: #ff4500;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+  a { color: inherit; }
+  ::selection { background: var(--black); color: var(--white); }
+
+  .mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--black);
+    z-index: 50;
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.025em;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .logo::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--accent);
+  }
+  .logo small {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--grey-2);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-left: 0.5rem;
+    font-weight: 400;
+  }
+  .nav-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--grey-2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* CONTAINER */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+  /* HERO */
+  .hero {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--black);
+  }
+  .hero-meta-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--grey-4);
+    margin-bottom: 3rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--grey-2);
+  }
+  .hero-meta-row > div:last-child { text-align: right; }
+  @media (max-width: 700px) {
+    .hero-meta-row { grid-template-columns: 1fr 1fr; }
+    .hero-meta-row > div:last-child { text-align: left; }
+  }
+  h1 {
+    font-weight: 600;
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 2rem;
+  }
+  h1 .accent { color: var(--accent); font-weight: 700; }
+  .hero-desc {
+    font-size: 1.1rem;
+    color: var(--grey-1);
+    max-width: 60ch;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--off-white);
+    border-bottom: 1px solid var(--black);
+    padding: 2rem 0;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+  @media (max-width: 700px) { .toc-grid { grid-template-columns: 1fr; } }
+  .toc-item {
+    padding: 1rem 1.5rem 1rem 0;
+    border-right: 1px solid var(--grey-4);
+    text-decoration: none;
+    color: var(--black);
+    transition: background 0.2s;
+    display: grid;
+    grid-template-columns: 50px 1fr auto;
+    gap: 1rem;
+    align-items: center;
+  }
+  .toc-item:nth-child(2n) { border-right: none; padding-left: 1.5rem; }
+  .toc-item:hover { background: var(--grey-5); }
+  .toc-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .toc-name {
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+  .toc-arrow { color: var(--grey-3); font-family: 'JetBrains Mono', monospace; }
+  .toc-item:hover .toc-arrow { color: var(--accent); }
+
+  /* SECTION */
+  section.block {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--black);
+  }
+  .section-header {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+    align-items: end;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--grey-4);
+  }
+  @media (max-width: 700px) { .section-header { grid-template-columns: 1fr; gap: 0.5rem; } }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--grey-2);
+  }
+  .section-num span { color: var(--accent); }
+  .section-title {
+    font-weight: 500;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+  .section-title em {
+    font-style: normal;
+    color: var(--grey-3);
+    font-weight: 400;
+  }
+
+  /* CONTENT TEXT */
+  .lead {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: var(--grey-1);
+    max-width: 65ch;
+    margin-bottom: 2.5rem;
+  }
+  .body-text {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--grey-1);
+    max-width: 65ch;
+    margin-bottom: 1rem;
+  }
+  .body-text strong { color: var(--black); font-weight: 600; }
+
+  h3.subhead {
+    font-weight: 500;
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
+    margin: 3rem 0 1rem;
+  }
+  h3.subhead .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    margin-right: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* PERSONALITY GRID */
+  .personality-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border: 1px solid var(--black);
+    margin: 2rem 0;
+  }
+  @media (max-width: 700px) { .personality-grid { grid-template-columns: 1fr; } }
+  .pers-cell {
+    padding: 2rem;
+    border-right: 1px solid var(--grey-4);
+    border-bottom: 1px solid var(--grey-4);
+  }
+  .pers-cell:nth-child(2n) { border-right: none; }
+  .pers-cell:nth-last-child(-n+2) { border-bottom: none; }
+  @media (max-width: 700px) {
+    .pers-cell { border-right: none !important; border-bottom: 1px solid var(--grey-4) !important; }
+    .pers-cell:last-child { border-bottom: none !important; }
+  }
+  .pers-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+  }
+  .pers-cell h4 {
+    font-weight: 500;
+    font-size: 1.3rem;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.6rem;
+  }
+  .pers-cell p {
+    color: var(--grey-1);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* DO / DON'T */
+  .do-dont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--black);
+    margin: 2rem 0;
+  }
+  @media (max-width: 700px) { .do-dont { grid-template-columns: 1fr; } }
+  .do, .dont { padding: 2rem 1.8rem; }
+  .do { border-right: 1px solid var(--grey-4); }
+  @media (max-width: 700px) {
+    .do { border-right: none; border-bottom: 1px solid var(--grey-4); }
+  }
+  .do-header, .dont-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .do-header { color: #1a8c4a; }
+  .dont-header { color: var(--accent); }
+  .do-header::before { content: '✓'; font-size: 0.85rem; }
+  .dont-header::before { content: '✕'; font-size: 0.85rem; }
+  .do ul, .dont ul {
+    list-style: none;
+  }
+  .do li, .dont li {
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--grey-5);
+    line-height: 1.4;
+  }
+  .do li:last-child, .dont li:last-child { border-bottom: none; }
+
+  /* EXAMPLE BLOCK */
+  .example {
+    background: var(--off-white);
+    border-left: 3px solid var(--accent);
+    padding: 1.5rem 1.8rem;
+    margin: 1.5rem 0;
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+  .example-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--grey-2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+  .example-bad {
+    background: var(--off-white);
+    border-left: 3px solid var(--grey-3);
+    padding: 1.5rem 1.8rem;
+    margin: 1.5rem 0;
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--grey-2);
+    text-decoration: line-through;
+    text-decoration-color: var(--grey-3);
+    text-decoration-thickness: 1px;
+  }
+  .example-bad .example-label {
+    color: var(--grey-3);
+    text-decoration: none;
+  }
+
+  /* COLOR SWATCHES */
+  .colors {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--black);
+    margin: 2rem 0;
+  }
+  @media (max-width: 700px) { .colors { grid-template-columns: 1fr 1fr; } }
+  .swatch {
+    aspect-ratio: 1;
+    position: relative;
+    border-right: 1px solid var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.2rem;
+  }
+  .swatch:last-child { border-right: none; }
+  @media (max-width: 700px) {
+    .swatch:nth-child(2n) { border-right: none; }
+    .swatch:nth-child(-n+2) { border-bottom: 1px solid var(--black); }
+  }
+  .swatch-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+  }
+  .swatch-hex {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  /* TYPOGRAPHY SAMPLES */
+  .type-sample {
+    border: 1px solid var(--grey-4);
+    padding: 2rem;
+    margin: 1.5rem 0;
+    background: var(--off-white);
+  }
+  .type-sample-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--grey-2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--grey-4);
+  }
+  .type-sample-meta > div:nth-child(2) { text-align: center; }
+  .type-sample-meta > div:last-child { text-align: right; }
+  .type-display { font-size: 3.5rem; font-weight: 600; letter-spacing: -0.04em; line-height: 0.95; }
+  .type-h1 { font-size: 2.2rem; font-weight: 600; letter-spacing: -0.035em; line-height: 1.05; }
+  .type-h2 { font-size: 1.6rem; font-weight: 500; letter-spacing: -0.025em; line-height: 1.1; }
+  .type-body { font-size: 1rem; line-height: 1.55; }
+  .type-mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* CHANNEL TABLE */
+  .channel-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    border: 1px solid var(--black);
+  }
+  .channel-table th {
+    background: var(--black);
+    color: var(--white);
+    text-align: left;
+    padding: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+  .channel-table td {
+    padding: 1.2rem 1rem;
+    border-bottom: 1px solid var(--grey-4);
+    font-size: 0.95rem;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .channel-table tr:last-child td { border-bottom: none; }
+  .channel-table td:first-child {
+    font-weight: 500;
+    width: 22%;
+    color: var(--black);
+  }
+  @media (max-width: 700px) {
+    .channel-table th:nth-child(3),
+    .channel-table td:nth-child(3) { display: none; }
+  }
+
+  /* GLOSSARY */
+  .glossary {
+    border-top: 1px solid var(--black);
+  }
+  .gloss-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--grey-4);
+    align-items: baseline;
+  }
+  @media (max-width: 700px) { .gloss-row { grid-template-columns: 1fr; gap: 0.3rem; } }
+  .gloss-term {
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+  }
+  .gloss-term .accent { color: var(--accent); }
+  .gloss-def { color: var(--grey-1); font-size: 0.95rem; line-height: 1.5; }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    color: var(--grey-3);
+    padding: 3rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .footer-inner > div:first-child { color: var(--white); }
+  .footer-inner > div:last-child { text-align: right; }
+  @media (max-width: 700px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .footer-inner > div:last-child { text-align: left; }
+  }
+
+  /* PRINT */
+  @media print {
+    nav, footer { display: none; }
+    section.block { page-break-inside: avoid; padding: 2rem 0; }
+    body { font-size: 11pt; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Agarrazil <small>/ Brand Book v1.0</small></div>
+    <div class="nav-meta">Mayo 2026 · Documento interno</div>
+  </div>
+</nav>
+
+<header class="hero container">
+  <div class="hero-meta-row">
+    <div>↳ Documento V1.0</div>
+    <div>Tono de voz + identidad</div>
+    <div>Estado: borrador inicial</div>
+    <div>↗ Editable</div>
+  </div>
+  <h1>Cómo <span class="accent">habla</span><br>y se <span class="accent">muestra</span> Agarrazil.</h1>
+  <p class="hero-desc">Manual interno para mantener una voz coherente en cada email, post de Instagram, propuesta comercial y conversación de WhatsApp. Si todo el equipo y todos los canales suenan como una sola persona, la marca existe. Si no, no.</p>
+</header>
+
+<section class="toc">
+  <div class="container">
+    <div class="toc-grid">
+      <a href="#esencia" class="toc-item">
+        <span class="toc-num">01</span>
+        <span class="toc-name">Esencia y promesa</span>
+        <span class="toc-arrow">→</span>
+      </a>
+      <a href="#personalidad" class="toc-item">
+        <span class="toc-num">02</span>
+        <span class="toc-name">Personalidad</span>
+        <span class="toc-arrow">→</span>
+      </a>
+      <a href="#tono" class="toc-item">
+        <span class="toc-num">03</span>
+        <span class="toc-name">Tono de voz</span>
+        <span class="toc-arrow">→</span>
+      </a>
+      <a href="#vocabulario" class="toc-item">
+        <span class="toc-num">04</span>
+        <span class="toc-name">Vocabulario</span>
+        <span class="toc-arrow">→</span>
+      </a>
+      <a href="#canales" class="toc-item">
+        <span class="toc-num">05</span>
+        <span class="toc-name">Tono por canal</span>
+        <span class="toc-arrow">→</span>
+      </a>
+      <a href="#identidad" class="toc-item">
+        <span class="toc-num">06</span>
+        <span class="toc-name">Identidad visual</span>
+        <span class="toc-arrow">→</span>
+      </a>
+      <a href="#tipografia" class="toc-item">
+        <span class="toc-num">07</span>
+        <span class="toc-name">Tipografía</span>
+        <span class="toc-arrow">→</span>
+      </a>
+      <a href="#aplicaciones" class="toc-item">
+        <span class="toc-num">08</span>
+        <span class="toc-name">Aplicaciones</span>
+        <span class="toc-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 01 ESENCIA -->
+<section id="esencia" class="block container">
+  <div class="section-header">
+    <div class="section-num"><span>01</span> / Esencia</div>
+    <h2 class="section-title">Quiénes somos. <em>Para quién.</em></h2>
+  </div>
+
+  <p class="lead">Agarrazil es un estudio independiente que digitaliza gremios y comercio local. Hacemos webs que solucionan un dolor concreto: el cliente potencial no encuentra al profesional. Y trabajamos con un método que elimina el riesgo: boceto antes de pagar.</p>
+
+  <h3 class="subhead"><span class="num">01.1</span>Nuestra promesa</h3>
+  <p class="body-text">En 7 días dejas de perder clientes que ya te buscan en Google. Te enseñamos el boceto antes de pagar un euro. Si no te gusta, no pagas. Y no escribes ni una línea: nos encargamos de todo, desde los textos hasta las fotos.</p>
+
+  <h3 class="subhead"><span class="num">01.2</span>El dolor que resolvemos</h3>
+  <p class="body-text">El fontanero, el electricista, el reformista, el abogado de barrio, la clínica pequeña — pierden clientes cada semana porque no aparecen bien en Google, no tienen una web seria o tienen una abandonada de 2014 que no saben tocar. Han pedido presupuestos a tres agencias, les han pedido 3.000 € + IVA + cuotas mensuales, y han desistido.</p>
+  <p class="body-text">Nosotros existimos para esa gente. <strong>Ese dolor es nuestra obsesión.</strong></p>
+
+  <h3 class="subhead"><span class="num">01.3</span>Para quién NO trabajamos</h3>
+  <p class="body-text">No somos para startups con rondas de inversión. No somos para marcas de moda. No somos para gente que quiere "una web bonita". Si el cliente no tiene un dolor concreto que su web pueda resolver, lo derivamos a otro. Decir que no es parte del método.</p>
+</section>
+
+<!-- 02 PERSONALIDAD -->
+<section id="personalidad" class="block container">
+  <div class="section-header">
+    <div class="section-num"><span>02</span> / Personalidad</div>
+    <h2 class="section-title">Cuatro rasgos. <em>No negociables.</em></h2>
+  </div>
+
+  <p class="lead">Si Agarrazil fuera una persona en una conversación de bar, sería esto. Estos cuatro rasgos están presentes siempre, en cualquier canal, con cualquier cliente.</p>
+
+  <div class="personality-grid">
+    <div class="pers-cell">
+      <div class="pers-label">A / Directo</div>
+      <h4>Vamos al grano.</h4>
+      <p>No usamos palabras de más. No vendemos humo. Si la frase puede acortarse, se acorta. Si una idea cabe en cinco palabras, no usamos quince. El cliente trabaja con las manos: respeta su tiempo.</p>
+    </div>
+    <div class="pers-cell">
+      <div class="pers-label">B / Honesto</div>
+      <h4>Sin trampas.</h4>
+      <p>Decimos lo que cuesta antes de empezar. Reconocemos cuando algo no es para nosotros. Decimos "no sé" cuando no sabemos. Si nos equivocamos, lo decimos. Es lo que esperamos del fontanero que llamamos a casa.</p>
+    </div>
+    <div class="pers-cell">
+      <div class="pers-label">C / Cercano</div>
+      <h4>Hablamos como tú.</h4>
+      <p>Ni "estimado señor" ni jerga de agencia. Ni "vamos al lío" ni gracietas. Hablamos como un amigo serio que sabe lo que hace: con respeto, con confianza, sin sobreactuar.</p>
+    </div>
+    <div class="pers-cell">
+      <div class="pers-label">D / Confiado</div>
+      <h4>Sabemos lo que hacemos.</h4>
+      <p>Hablamos con la seguridad de quien lleva años en esto. No pedimos perdón por cobrar. No nos justificamos. Cuando recomendamos algo, lo decimos sin titubear. Pero nunca somos chulos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 TONO -->
+<section id="tono" class="block container">
+  <div class="section-header">
+    <div class="section-num"><span>03</span> / Tono de voz</div>
+    <h2 class="section-title">Cómo escribimos. <em>En la práctica.</em></h2>
+  </div>
+
+  <p class="lead">Cuatro reglas que aplican a cualquier texto que salga con el nombre de Agarrazil. Si una frase rompe alguna, se reescribe.</p>
+
+  <h3 class="subhead"><span class="num">03.1</span>Frases cortas. Ideas claras.</h3>
+  <p class="body-text">Una frase, una idea. Punto. Otra frase. Si una frase necesita una coma seguida de un "que" para sostenerse, se parte en dos. La gente lee en el móvil mientras espera al hijo en el cole.</p>
+
+  <div class="example">
+    <div class="example-label">Sí</div>
+    Hacemos tu web en 7 días. Sin que escribas una línea. Si no te gusta el boceto, no pagas.
+  </div>
+
+  <div class="example-bad">
+    <div class="example-label">No</div>
+    En Agarrazil somos especialistas en la creación de presencias digitales de alto impacto, diseñadas a medida para satisfacer las necesidades específicas de cada cliente, garantizando un proceso ágil y sin compromiso inicial.
+  </div>
+
+  <h3 class="subhead"><span class="num">03.2</span>Hablamos del cliente, no de nosotros.</h3>
+  <p class="body-text">El protagonista del texto siempre es el cliente y su problema. "Tú" antes que "nosotros". "Tu negocio" antes que "nuestra metodología". La regla del 70/30: como mucho un 30% del texto puede hablar de Agarrazil; el resto es del cliente.</p>
+
+  <div class="example">
+    <div class="example-label">Sí</div>
+    Pierdes clientes que ya te buscan en Google. Lo arreglamos en 7 días.
+  </div>
+
+  <div class="example-bad">
+    <div class="example-label">No</div>
+    Somos una agencia con experiencia en la digitalización de pymes que ofrece soluciones llave en mano.
+  </div>
+
+  <h3 class="subhead"><span class="num">03.3</span>Concreto. Con cifras y plazos.</h3>
+  <p class="body-text">"Rápido" no es nada. "En 7 días" sí. "Barato" no es nada. "490€ todo incluido" sí. Cualquier promesa vaga se cambia por algo medible. Si no podemos medirlo, no lo prometemos.</p>
+
+  <div class="example">
+    <div class="example-label">Sí</div>
+    Boceto en 72 horas. Web online en 7 días. 490€ precio cerrado.
+  </div>
+
+  <div class="example-bad">
+    <div class="example-label">No</div>
+    Plazos ágiles, presupuesto ajustado y alta calidad.
+  </div>
+
+  <h3 class="subhead"><span class="num">03.4</span>Verbos en presente. Activa, no pasiva.</h3>
+  <p class="body-text">"Hacemos", no "se hace". "Te enseñamos", no "será mostrado". "Tu web está online", no "tu web habrá sido publicada". El presente y la voz activa transmiten control. La pasiva suena a contrato de banco.</p>
+
+  <div class="example">
+    <div class="example-label">Sí</div>
+    Cuentas tu negocio. Diseñamos. Te enseñamos. Apruebas. Publicamos.
+  </div>
+
+  <div class="example-bad">
+    <div class="example-label">No</div>
+    Una vez recibida la información del cliente, se procederá al diseño de la propuesta gráfica.
+  </div>
+</section>
+
+<!-- 04 VOCABULARIO -->
+<section id="vocabulario" class="block container">
+  <div class="section-header">
+    <div class="section-num"><span>04</span> / Vocabulario</div>
+    <h2 class="section-title">Palabras sí. <em>Palabras no.</em></h2>
+  </div>
+
+  <p class="lead">Lista cerrada de qué decir y qué evitar. Si una palabra no está, se decide caso por caso aplicando los principios de personalidad y tono.</p>
+
+  <div class="do-dont">
+    <div class="do">
+      <div class="do-header">Sí decimos</div>
+      <ul>
+        <li>Cliente / clientes (no "user", "lead")</li>
+        <li>Web / página (no "site", "plataforma")</li>
+        <li>Negocio / oficio (no "marca", "brand")</li>
+        <li>Hacer (no "implementar", "ejecutar")</li>
+        <li>Conseguir / lograr (no "alcanzar objetivos")</li>
+        <li>Boceto (no "wireframe", "mockup")</li>
+        <li>Presupuesto (no "fee", "tarifa")</li>
+        <li>Empezar (no "iniciar", "arrancar")</li>
+        <li>Sí y no (no "afirmativo", "negativo")</li>
+        <li>"Te" (no "le", no "usted")</li>
+      </ul>
+    </div>
+    <div class="dont">
+      <div class="dont-header">Evitamos</div>
+      <ul>
+        <li>Sinergia, ecosistema, partner, stakeholder</li>
+        <li>Solución integral, llave en mano</li>
+        <li>De vanguardia, disruptivo, innovador</li>
+        <li>Digitalización 360, transformación digital</li>
+        <li>"Estamos comprometidos con…"</li>
+        <li>"En Agarrazil creemos que…"</li>
+        <li>"Vamos al lío" / "te lo cuento" / "spoiler"</li>
+        <li>Emojis abusivos en textos comerciales 🚀💪🔥</li>
+        <li>"Solo por hoy" / "última oportunidad" (urgencia falsa)</li>
+        <li>Anglicismos innecesarios (briefing sí, mindset no)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 05 CANALES -->
+<section id="canales" class="block container">
+  <div class="section-header">
+    <div class="section-num"><span>05</span> / Tono por canal</div>
+    <h2 class="section-title">Mismo carácter. <em>Distinto formato.</em></h2>
+  </div>
+
+  <p class="lead">El tono base no cambia, pero la temperatura se ajusta según dónde estemos. Misma persona en un email comercial que en una historia de Instagram, pero hablando un poco distinto.</p>
+
+  <table class="channel-table">
+    <thead>
+      <tr>
+        <th>Canal</th>
+        <th>Cómo</th>
+        <th>Ejemplo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Web pública</td>
+        <td>Cuidado, directo, vendedor sin parecerlo. Frases muy cortas. Verbos potentes. Sin emojis.</td>
+        <td>"Deja de perder clientes que ya te buscan en Google."</td>
+      </tr>
+      <tr>
+        <td>Email comercial</td>
+        <td>Directo y respetuoso. Saludo simple, una pregunta o propuesta clara, despedida breve. Sin floritura.</td>
+        <td>"Hola Mikel, vi tu taller en Google. Te falta web. ¿Te enseño un boceto sin compromiso?"</td>
+      </tr>
+      <tr>
+        <td>WhatsApp</td>
+        <td>Más conversacional. Frases aún más cortas. Algún emoji puntual (✓, →) si aporta. Nunca de relleno.</td>
+        <td>"Hola Iñaki. He visto tu mensaje. Te llamo a las 17h, ¿te va?"</td>
+      </tr>
+      <tr>
+        <td>Instagram feed</td>
+        <td>Caption corto. Una idea por post. Empieza con gancho fuerte. Usa el voseo neutro ("tú"). Hashtags sólo cuando sumen.</td>
+        <td>"Esto le pasó a Reformas Elkano. Antes recibía presupuestos por teléfono. Ahora también mientras duerme."</td>
+      </tr>
+      <tr>
+        <td>Instagram stories</td>
+        <td>Tono más informal. Detrás-de-cámara permitido. Mostrar trabajo en proceso, no postureo. Voz humana.</td>
+        <td>"Bocetando la web de un fontanero de Hernani. Cuando la apruebe la enseño aquí."</td>
+      </tr>
+      <tr>
+        <td>Propuesta comercial</td>
+        <td>Estructura limpia. Datos concretos. Sin verborrea. Precios claros desde el primer párrafo.</td>
+        <td>"Web de captación. 990€ precio cerrado. Boceto antes del pago. Online en 7 días."</td>
+      </tr>
+      <tr>
+        <td>LinkedIn</td>
+        <td>Más reposado pero igual de directo. Casos reales con cifras. Sin "humble brag" ni storytelling de gurú.</td>
+        <td>"Hicimos la web de un electricista de Pasaia. Le entran 4 presupuestos a la semana. Esto fue lo que cambiamos."</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 06 IDENTIDAD VISUAL -->
+<section id="identidad" class="block container">
+  <div class="section-header">
+    <div class="section-num"><span>06</span> / Identidad visual</div>
+    <h2 class="section-title">Cómo nos vemos. <em>Por qué así.</em></h2>
+  </div>
+
+  <p class="lead">Suizo contemporáneo: blanco puro, retícula estricta, datos visibles, un acento naranja. La estética dice antes que las palabras: "esto es un sistema, no una decoración".</p>
+
+  <h3 class="subhead"><span class="num">06.1</span>Paleta primaria</h3>
+
+  <div class="colors">
+    <div class="swatch" style="background: var(--white); color: var(--black); border-color: var(--black);">
+      <div class="swatch-name">Blanco</div>
+      <div class="swatch-hex">#FFFFFF</div>
+    </div>
+    <div class="swatch" style="background: var(--black); color: var(--white);">
+      <div class="swatch-name">Negro</div>
+      <div class="swatch-hex">#050505</div>
+    </div>
+    <div class="swatch" style="background: var(--accent); color: var(--white);">
+      <div class="swatch-name">Naranja</div>
+      <div class="swatch-hex">#FF4500</div>
+    </div>
+    <div class="swatch" style="background: var(--grey-3); color: var(--white);">
+      <div class="swatch-name">Gris</div>
+      <div class="swatch-hex">#999999</div>
+    </div>
+  </div>
+
+  <p class="body-text"><strong>Reglas de uso:</strong> el negro es el color del texto principal. El blanco es el lienzo. El gris es para datos secundarios y soporte. <strong>El naranja es un acento — nunca un fondo grande, nunca el color de párrafos enteros.</strong> Aparece en momentos clave: una palabra resaltada en un titular, un punto, una etiqueta de "más vendido", el indicador "aceptando proyectos", el dot del logo. Si lo pones en todo, deja de funcionar.</p>
+
+  <h3 class="subhead"><span class="num">06.2</span>El logo</h3>
+  <p class="body-text">Logotipo en Inter Bold con un cuadrado naranja delante. El cuadrado es la firma visual del estudio: aparece también como bullet en listas, separador en metadatos y favicon. Tamaño mínimo del cuadrado en pantalla: 8 píxeles. Nunca lo redondeamos. Nunca lo deformamos.</p>
+
+  <h3 class="subhead"><span class="num">06.3</span>Retícula</h3>
+  <p class="body-text">Todo se construye sobre una retícula de 12 columnas. Los elementos se alinean a esa retícula. La retícula puede ser visible (como en el fondo de la home) o invisible — pero siempre está. La asimetría es bienvenida si está justificada por la retícula. La asimetría aleatoria, no.</p>
+</section>
+
+<!-- 07 TIPOGRAFÍA -->
+<section id="tipografia" class="block container">
+  <div class="section-header">
+    <div class="section-num"><span>07</span> / Tipografía</div>
+    <h2 class="section-title">Dos fuentes. <em>Sólo dos.</em></h2>
+  </div>
+
+  <p class="lead">Inter para todo el texto. JetBrains Mono para datos, etiquetas y metainformación. No se usan más fuentes. La restricción es deliberada: lo que da carácter es la composición, no la cantidad de tipografías.</p>
+
+  <div class="type-sample">
+    <div class="type-sample-meta">
+      <div>Inter / 600</div>
+      <div>Display</div>
+      <div>letter-spacing -0.04em</div>
+    </div>
+    <div class="type-display">Webs precisas para gremios y oficios.</div>
+  </div>
+
+  <div class="type-sample">
+    <div class="type-sample-meta">
+      <div>Inter / 600</div>
+      <div>H1</div>
+      <div>letter-spacing -0.035em</div>
+    </div>
+    <div class="type-h1">Tres principios. Cero ambigüedad.</div>
+  </div>
+
+  <div class="type-sample">
+    <div class="type-sample-meta">
+      <div>Inter / 500</div>
+      <div>H2</div>
+      <div>letter-spacing -0.025em</div>
+    </div>
+    <div class="type-h2">Web lista en días, no en meses.</div>
+  </div>
+
+  <div class="type-sample">
+    <div class="type-sample-meta">
+      <div>Inter / 400</div>
+      <div>Cuerpo</div>
+      <div>line-height 1.55</div>
+    </div>
+    <div class="type-body">Te entregamos un boceto previo sin compromiso. Si no te convence, no pagas. Sin compromiso, sin señales, sin trampa. Lo que ves es lo que pagas.</div>
+  </div>
+
+  <div class="type-sample">
+    <div class="type-sample-meta">
+      <div>JetBrains Mono / 400</div>
+      <div>Etiqueta</div>
+      <div>letter-spacing 0.08em</div>
+    </div>
+    <div class="type-mono">SRV.01 / Aparece en Google</div>
+  </div>
+</section>
+
+<!-- 08 APLICACIONES -->
+<section id="aplicaciones" class="block container">
+  <div class="section-header">
+    <div class="section-num"><span>08</span> / Aplicaciones</div>
+    <h2 class="section-title">El glosario rápido. <em>Para consulta diaria.</em></h2>
+  </div>
+
+  <p class="lead">Frases tipo, plantillas y atajos para situaciones comunes. Si no sabes cómo redactar algo, busca aquí primero.</p>
+
+  <div class="glossary">
+    <div class="gloss-row">
+      <div class="gloss-term"><span class="accent">→</span> Cómo nos presentamos en frío</div>
+      <div class="gloss-def">"Soy [nombre], de Agarrazil. Hago webs para [oficio del cliente]. He visto tu negocio. ¿Tienes 5 minutos para que te enseñe algo?"</div>
+    </div>
+    <div class="gloss-row">
+      <div class="gloss-term"><span class="accent">→</span> Cómo abrimos un email comercial</div>
+      <div class="gloss-def">"Hola [nombre]. Vi tu [taller / clínica / negocio] en Google. Tienes ficha pero no web. Te puedo enseñar un boceto sin compromiso. ¿Te interesa?"</div>
+    </div>
+    <div class="gloss-row">
+      <div class="gloss-term"><span class="accent">→</span> Cómo cerramos un email comercial</div>
+      <div class="gloss-def">"Si te encaja, me dices. Si no, también. Sin agobios."</div>
+    </div>
+    <div class="gloss-row">
+      <div class="gloss-term"><span class="accent">→</span> Cómo decimos un precio</div>
+      <div class="gloss-def">"990€ precio cerrado. Incluye [X, Y, Z]. Sin extras escondidos. Pagas a la entrega del boceto aprobado."</div>
+    </div>
+    <div class="gloss-row">
+      <div class="gloss-term"><span class="accent">→</span> Cómo decimos que no</div>
+      <div class="gloss-def">"Esto no es para nosotros. Te puedo recomendar a [referencia], que sí lo hace bien."</div>
+    </div>
+    <div class="gloss-row">
+      <div class="gloss-term"><span class="accent">→</span> Cómo empezamos un caption en Instagram</div>
+      <div class="gloss-def">Con un dato o una frase corta. "12 presupuestos en una semana. Esto fue lo que cambiamos." NO con "Hola comunidad" ni "Os queremos contar".</div>
+    </div>
+    <div class="gloss-row">
+      <div class="gloss-term"><span class="accent">→</span> Cómo respondemos a una mala reseña</div>
+      <div class="gloss-def">Sin defensiva. "Tienes razón en X. En Y discrepamos por Z. Te llamo en privado para arreglarlo." Pública y breve.</div>
+    </div>
+    <div class="gloss-row">
+      <div class="gloss-term"><span class="accent">→</span> Cómo firmamos los emails</div>
+      <div class="gloss-def">"[nombre] / Agarrazil" + teléfono + web. Sin firmas con frases motivacionales ni quotes de Tony Robbins. Sin "Saludos cordiales".</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>⬤ Agarrazil</div>
+    <div>Brand Book v1.0</div>
+    <div>Mayo 2026</div>
+    <div>Documento interno</div>
+  </div>
+</footer>
+
+</body>
+</html>
